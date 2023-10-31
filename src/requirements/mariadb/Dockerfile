@@ -2,7 +2,7 @@ FROM debian:buster
 
 RUN apt-get update && apt-get upgrade -y
 
-RUN apt-get install mariadb mariadb-client -y
+RUN apt-get install mariadb-server -y
 
 RUN rm -rf /etc/inception.cnf
 
