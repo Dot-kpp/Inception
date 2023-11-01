@@ -4,7 +4,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install mariadb-server -y
 
 RUN rm -rf /etc/inception.cnf
 
-COPY config/my.cnf /etc/my.cnf
+COPY conf/my.cnf /etc/my.cnf
 
 RUN mkdir -p /run/mysqld; \
 	chown -R mysql:mysql /run/mysqld; \
