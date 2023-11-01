@@ -1,6 +1,8 @@
 FROM debian:buster
 
-RUN apt-get update && apt-get upgrade -y && apt-get install mariadb-server -y
+RUN apt-get update && apt-get upgrade -y
+
+RUN apt-get install -y mariadb-server
 
 RUN rm -rf /etc/inception.cnf
 
@@ -12,6 +14,8 @@ RUN mkdir -p /run/mysqld; \
 	mysql_install_db --basedir=/usr --user=$MYSQL_USER --datadir=/var/lib/mysql
 
 COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
+
+RUN chmod 755 /tmp/docker-entrypoint.sh
 
 ENTRYPOINT [ "sh", "/tmp/docker-entrypoint.sh" ]
 
