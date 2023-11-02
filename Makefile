@@ -2,7 +2,7 @@ DEFAULT_GOAL: compose
 .PHONY: compose clean re
 
 NAME			= -p inception
-COMPOSE_FILE	= -f ./srcs/docker-compose.yml
+COMPOSE_FILE	= -f ./src/docker-compose.yml
 
 run:
 	sudo docker-compose $(NAME) $(COMPOSE_FILE) up
