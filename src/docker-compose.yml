@@ -1,59 +1,117 @@
-version: "3"
-services:
+# version: "3"
+# services:
 
+#   nginx:
+#     container_name: nginx
+#     networks:
+#       - frontend
+#     depends_on:
+#       - wordpress
+#     volumes:
+#       - wordpress_data:/var/www/html
+#     build:
+#       context: requirements/nginx/
+#       dockerfile: Dockerfile
+#     env_file: .env
+#     ports:
+#       - "443:443"
+#     restart: on-failure
+
+#   wordpress:
+#     container_name: wordpress
+#     env_file: .env
+#     networks:
+#       - frontend
+#       - backend
+#     volumes:
+#       - wordpress_data:/var/www/html
+#     build:
+#       context: requirements/wordpress/
+#       dockerfile: Dockerfile
+#     depends_on:
+#       - mariadb
+#     restart: on-failure
+#     expose:
+#       - "9000"
+
+#   mariadb:
+#     container_name: mariadb
+#     networks:
+#       - backend
+#     build:
+#       context: requirements/mariadb/
+#       dockerfile: Dockerfile
+#     env_file: .env
+#     volumes:
+#       - mariadb_data:/var/lib/mysql
+#     restart: unless-stopped
+#     expose:
+#       - "3306"
+      
+# # networks:
+# #   inception:
+# #     driver: bridge
+# networks:
+#   frontend:
+#   backend:
+
+# volumes:
+#   mariadb_data:
+#     driver: local
+#     driver_opts:
+#       type: 'none'
+#       o: 'bind'
+#       device: /home/inception/data/mariadb
+#   wordpress_data:
+#     driver: local
+#     driver_opts:
+#       type: 'none'
+#       o: 'bind'
+#       device: /home/inception/data/wordpress
+
+
+version: "3"
+
+services:
   nginx:
     container_name: nginx
-    networks:
-      - frontend
-    depends_on:
-      - wordpress
-    volumes:
-      - wordpress_data:/var/www/html
-    build:
-      context: requirements/nginx/
-      dockerfile: Dockerfile
-    env_file: .env
+    build: requirements/nginx/
     ports:
       - "443:443"
-    restart: on-failure
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - frontend
+    restart: unless-stopped
 
   wordpress:
     container_name: wordpress
-    env_file: .env
+    build: requirements/wordpress/
+    expose:
+      - "9000"
+    volumes:
+      - wordpress_data:/var/www/html
+    depends_on:
+      - mariadb
     networks:
       - frontend
       - backend
-    volumes:
-      - wordpress_data:/var/www/html
-    build:
-      context: requirements/wordpress/
-      dockerfile: Dockerfile
-    depends_on:
-      - mariadb
-    restart: on-failure
-    expose:
-      - "9000"
+    restart: unless-stopped
+    env_file:
+      - .env
 
   mariadb:
     container_name: mariadb
-    networks:
-      - backend
-    build:
-      context: requirements/mariadb/
-      dockerfile: Dockerfile
-    env_file: .env
-    volumes:
-      - mariadb_data:/var/lib/mysql
-    restart: unless-stopped
+    build: requirements/mariadb/
     expose:
       - "3306"
-      
-# networks:
-#   inception:
-#     driver: bridge
-networks:
-  frontend:
-  backend:
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - backend
+    restart: unless-stopped
+    env_file:
+      - .env
 
 volumes:
   mariadb_data:
@@ -68,3 +126,7 @@ volumes:
       type: 'none'
       o: 'bind'
       device: /home/inception/data/wordpress
+
+networks:
+  frontend:
+  backend:
