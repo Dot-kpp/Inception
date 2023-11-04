@@ -2,7 +2,15 @@ FROM debian:buster
 
 RUN apt-get update && apt-get upgrade -y
 
-RUN apt-get update && apt-get install -y \
+# Add the repository for PHP 8.0
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository ppa:ondrej/php
+
+# Update the package list after adding the repository
+RUN apt-get update
+
+# Install PHP 8.0 and its extensions
+RUN apt-get install -y \
     php8.0 \
     php8.0-fpm \
     php8.0-opcache \
