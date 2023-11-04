@@ -4,6 +4,7 @@ RUN apt-get update && apt-get upgrade -y
 
 # Install PHP 7.3 and extensions
 RUN apt-get install -y \
+    curl \
     php7.3 \
     php7.3-fpm \
     php7.3-opcache \
