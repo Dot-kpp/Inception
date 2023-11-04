@@ -55,10 +55,10 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: '/Users/inception/data/wordpress'
+      device: '/Users/login/data/wordpress'
   mariadb:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: '/Users/inception/data/mariadb'
+      device: '/Users/login/data/mariadb'
