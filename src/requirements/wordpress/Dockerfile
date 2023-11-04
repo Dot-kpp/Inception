@@ -2,34 +2,20 @@ FROM debian:buster
 
 RUN apt-get update && apt-get upgrade -y
 
-RUN apt-get install -y \
-	curl \
-	openssl \
-	bash \
-	mariadb-client \
-	php8 \
-	php8-fpm \
-	php8-opcache \
-	php8-mysqli \
-	php8-session \
-	php8-iconv \
-	php8-json \
-	php8-gd \
-	php8-curl \
-	php8-xml \
-	php8-common \
-	php8-imap \
-	php8-cgi \
-	php8-pdo \
-	php8-pdo_mysql \
-	php8-soap \
-	php8-posix \
-	php8-redis \
-	php8-gettext \
-	php8-ldap \
-	php8-ctype \
-	php8-dom \
-	php8-phar
+RUN apt-get update && apt-get install -y \
+    php8.0 \
+    php8.0-fpm \
+    php8.0-opcache \
+    php8.0-mysql \
+    php8.0-curl \
+    php8.0-xml \
+    php8.0-gd \
+    php8.0-redis \
+    php8.0-ldap \
+    php8.0-json \
+    php8.0-imap \
+    php8.0-mbstring \
+    php8.0-zip
 
 COPY conf/www.conf /etc/php8/php-fpm.d/
 
