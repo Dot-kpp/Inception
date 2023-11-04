@@ -3,8 +3,6 @@ FROM debian:buster
 # Update and upgrade packages
 RUN apt-get update && apt-get upgrade -y
 
-# Install MariaDB server
-RUN apt-get install -y mariadb
 RUN apt-get install -y mariadb-server
 RUN apt-get install -y mariadb-client
 
