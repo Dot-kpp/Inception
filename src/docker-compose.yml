@@ -38,6 +38,8 @@ services:
       - frontend
     depends_on:
       - wordpress
+    volumes:
+      - wordpress_data:/var/www/html
     build:
       context: requirements/nginx/
       dockerfile: Dockerfile
