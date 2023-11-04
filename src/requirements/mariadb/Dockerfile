@@ -4,7 +4,9 @@ FROM debian:buster
 RUN apt-get update && apt-get upgrade -y
 
 # Install MariaDB server
+RUN apt-get install -y mariadb
 RUN apt-get install -y mariadb-server
+RUN apt-get install -y mariadb-client
 
 # Remove the existing MariaDB configuration (if needed)
 RUN rm -f /etc/mysql/my.cnf
