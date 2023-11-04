@@ -4,7 +4,7 @@ services:
   mariadb:
     container_name: mariadb
     networks:
-      - inception2
+      - inception
     build:
       context: requirements/mariadb
       dockerfile: Dockerfile
@@ -18,7 +18,7 @@ services:
   nginx:
     container_name: nginx
     networks:
-      - inception2
+      - inception
     depends_on:
       - wordpress
     build:
@@ -33,7 +33,7 @@ services:
     container_name: wordpress
     env_file: .env
     networks:
-      - inception2
+      - inception
     volumes:
       - wordpress:/var/www/wordpress
     build:
@@ -46,7 +46,7 @@ services:
       - "9000"
 
 networks:
-  inception2:
+  inception:
     driver: bridge
 
 volumes:
