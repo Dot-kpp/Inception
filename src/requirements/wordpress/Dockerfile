@@ -3,15 +3,54 @@ FROM debian:buster
 RUN apt-get update && apt-get upgrade -y
 
 RUN apt-get install -y \
-    php7.3 \
-    php-fpm \
-    php-mysql \
-    mariadb-client
+	curl \
+	openssl \
+	bash \
+	mariadb-client \
+	php8 \
+	php8-fpm \
+	php8-opcache \
+	php8-mysqli \
+	php8-session \
+	php8-iconv \
+	php8-json \
+	php8-gd \
+	php8-curl \
+	php8-xml \
+	php8-common \
+	php8-imap \
+	php8-cgi \
+	php8-pdo \
+	php8-pdo_mysql \
+	php8-soap \
+	php8-posix \
+	php8-redis \
+	php8-gettext \
+	php8-ldap \
+	php8-ctype \
+	php8-dom \
+	php8-phar
 
-RUN apt-get install wget -y
+COPY conf/www.conf /etc/php8/php-fpm.d/
 
-RUN wget https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz -P /var/www
+RUN curl -o /usr/local/bin/wp -fL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar; \
+	chmod +x /usr/local/bin/wp; \
+	wp --allow-root --version
 
-RUN cd /var/www && tar -xzf wordpress-6.0-fr_FR.tar.gz && rm wordpress-6.0-fr_FR.tar.gz
+RUN set -ex; \
+	mkdir -p /var/www/html; \
+	chown -R www-data:www-data /var/www/html
 
-RUN chown -R root:root /var/www/wordpress
+COPY docker-entrypoint.sh /usr/local/bin/
+WORKDIR /var/www/html
+ENTRYPOINT [ "sh", "/usr/local/bin/docker-entrypoint.sh" ]
+
+CMD [ "php-fpm8", "-F", "-R"]
+
+# RUN apt-get install wget -y
+
+# RUN wget https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz -P /var/www
+
+# RUN cd /var/www && tar -xzf wordpress-6.0-fr_FR.tar.gz && rm wordpress-6.0-fr_FR.tar.gz
+
+# RUN chown -R root:root /var/www/wordpress
