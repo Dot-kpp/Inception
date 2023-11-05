@@ -31,8 +31,9 @@ RUN curl -o /usr/local/bin/wp -fL https://raw.githubusercontent.com/wp-cli/build
     wp --allow-root --version
 
 # Create the directory for your web application
-RUN mkdir -p /var/www/html; \
-    chown -R www-data:www-data /var/www/html
+RUN set -ex; \
+	mkdir -p /var/www/html; \
+	chown -R www-data:www-data /var/www/html
 
 # Copy your Docker entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/
