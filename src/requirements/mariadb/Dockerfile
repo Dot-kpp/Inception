@@ -28,7 +28,6 @@
 # CMD [ "mysqld" ]
 
 
-
 FROM debian:buster
 
 # Update and upgrade packages, and install MariaDB server and client
@@ -50,5 +49,6 @@ COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
 # Make the entrypoint script executable
 RUN chmod +x /tmp/docker-entrypoint.sh
 
-# Define the command to run MariaDB
-CMD ["/tmp/docker-entrypoint.sh"]
+# Define the command to run MariaDB (not the entrypoint script)
+CMD ["mysqld"]
+
