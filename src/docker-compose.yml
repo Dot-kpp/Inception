@@ -112,6 +112,9 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'  # Allow empty password
+      MYSQL_ROOT_HOST: wordpress.inception_backend  # Set allowed host
 
 volumes:
   mariadb_data:
