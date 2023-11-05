@@ -3,6 +3,7 @@ FROM debian:buster
 # Update and upgrade packages, and install PHP 7.3 and extensions
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y \
+    mariadb-client \
     curl \
     php7.3 \
     php7.3-fpm \
