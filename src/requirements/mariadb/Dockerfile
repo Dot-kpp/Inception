@@ -32,9 +32,8 @@ FROM debian:buster
 
 # Update and upgrade packages, and install MariaDB server and client
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y mariadb-server mariadb-client
-
-RUN apt-get install -y mysql-client
+    apt-get install -y mariadb-server && \
+    apt-get install -y mariadb-client
 
 # Copy your custom MariaDB configuration
 COPY conf/my.cnf /etc/mysql/my.cnf
