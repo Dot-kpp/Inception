@@ -85,10 +85,10 @@
 #!/bin/sh
 
 # Start the MariaDB server
-/usr/bin/mysqld &
+mysqld_safe &
 
 # Wait for MariaDB server to start (max 30 seconds)
-timeout=30
+timeout=40
 while ! mysqladmin ping -h localhost -u root &>/dev/null
 do
     timeout=$(expr $timeout - 1)
