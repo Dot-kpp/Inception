@@ -2,7 +2,7 @@
 
 set -e
 
-/usr/bin/mysql --bootstrap << EOF
+/usr/bin/mysql << EOF
 USE mysql;
 FLUSH PRIVILEGES;
 DELETE FROM mysql.user WHERE User='';
