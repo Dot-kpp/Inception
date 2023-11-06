@@ -18,9 +18,9 @@ if [ ! -f /tmp/done_config ]; then
     wp core install --url="$DOMAIN_NAME" --title="$WORDPRESS_TITLE" \
 		--admin_user="$WORDPRESS_ADMIN" --admin_password="$WORDPRESS_ADMIN_PASSWORD" \
 		--admin_email="$WORDPRESS_ADMIN_EMAIL" --skip-email --allow-root
+	echo "Configuring Wordpress!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     wp user create "$WORDPRESS_USER" "$WORDPRESS_EMAIL" --role=author \
 		--user_pass="$WORDPRESS_PASSWORD" --allow-root
-	echo "Configuring Wordpress!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 fi
 
 exec "$@"
