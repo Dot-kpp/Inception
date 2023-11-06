@@ -17,7 +17,8 @@ RUN apt-get update && apt-get upgrade -y && \
     php7.3-json \
     php7.3-imap \
     php7.3-mbstring \
-    php7.3-zip
+    php7.3-zip \
+    dumb-init 
 
 # Copy your PHP-FPM configuration file (www.conf)
 COPY conf/www.conf /etc/php/7.3/fpm/pool.d/
@@ -41,5 +42,6 @@ COPY docker-entrypoint.sh /usr/local/bin/
 
 WORKDIR /var/www/html
 
-ENTRYPOINT [ "sh", "/usr/local/bin/docker-entrypoint.sh" ]
-CMD [ "php-fpm7.3", "-F", "-R"]
+# ENTRYPOINT [ "sh", "/usr/local/bin/docker-entrypoint.sh" ]
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["sh", "/usr/local/bin/docker-entrypoint.sh && exec php-fpm7.3 -F -R"]
