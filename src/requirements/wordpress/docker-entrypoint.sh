@@ -12,8 +12,8 @@ if [ ! -f /tmp/done_config ]; then
 
 
 	wp core download --path="/var/www/html" --allow-root
-    wp config create --dbname="$MYSQL_DATABASE" --dbuser="$MYSQL_USER" \
-    --dbpass="$MYSQL_PASSWORD" --dbhost="$MYSQL_HOST" --dbcharset="utf8mb4" \
+    wp config create --dbname="$WORDPRESS_DB" --dbuser="$DB_USER1" \
+    --dbpass="$DB_USERPASS1" --dbhost="$MYSQL_HOST" --dbcharset="utf8mb4" \
     --dbcollate="utf8mb4_general_ci" --path="/var/www/html" --allow-root --debug || {
     echo 'Failed to create wp-config.php'
     exit 1
