@@ -31,7 +31,10 @@ done
 if [ ! -f /tmp/done_config ]; then
 	touch /tmp/done_config
 
-	wp core download --allow-root
+	mkdir -p /var/www/html
+    chmod 777 /var/www/html
+
+	wp core download --path="/var/www/html" --allow-root
     wp config create --dbname="$MYSQL_DATABASE" --dbuser="$MYSQL_USER" \
 		--dbpass="$MYSQL_PASSWORD" --dbhost="$MYSQL_HOST" --dbcharset="utf8mb4" \
 		--dbcollate="utf8mb4_general_ci" --path="/var/www/html" --allow-root
