@@ -7,7 +7,11 @@ mysqld --console &
 echo "Waiting for MariaDB server to accept connections"
 sleep 8
 
+mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "DROP USER IF EXISTS '$MYSQL_USER'@'mariadb';"
+
+# Grant permissions
 mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER'@'mariadb' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION;"
+
 
 mysql -e "FLUSH PRIVILEGES;"
 mysql -e "DELETE FROM	mysql.user WHERE User='';"
