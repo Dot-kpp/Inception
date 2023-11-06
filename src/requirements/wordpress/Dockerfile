@@ -4,7 +4,7 @@ FROM debian:buster
 RUN apt-get update && apt-get upgrade -y && \
     # apt-get install -y apt-utils &&\
     apt-get install -y \
-    mariadb-client \
+    # mariadb-client \
     curl \
     php7.3 \
     php7.3-fpm \
