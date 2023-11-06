@@ -2,7 +2,6 @@ FROM debian:buster
 
 # Update and upgrade packages, and install MariaDB server and client
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y mariadb-server && \
     apt-get install -y mariadb-client \
     dumb-init
 
@@ -25,5 +24,5 @@ RUN chmod +x /tmp/docker-entrypoint.sh
 
 # Define the command to run MariaDB (not the entrypoint script)
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["sh", "-c", "/tmp/docker-entrypoint.sh && exec mysqld"]
+CMD ["mysqld"]
 
