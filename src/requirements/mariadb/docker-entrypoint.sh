@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Start the MariaDB server
-mysqld --user=mysql --console &
+mysqld --console &
 
 # Wait for MariaDB server to start (max 30 seconds)
 echo "Waiting for MariaDB server to accept connections"
@@ -17,8 +17,6 @@ sleep 20
 #     fi
 #     sleep 1
 # done
-
-mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'wordpress.inception_backend' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION;"
 
 mysql -e "FLUSH PRIVILEGES;"
 mysql -e "DELETE FROM	mysql.user WHERE User='';"
