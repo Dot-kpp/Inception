@@ -18,3 +18,4 @@ FLUSH PRIVILEGES;
 EOF
 
 exec "$@"
+
