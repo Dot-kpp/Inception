@@ -105,7 +105,9 @@ mysql -e "CREATE DATABASE IF NOT EXISTS ${WORDPRESS_DB};"
 
 # Create the first user
 mysql -e "CREATE USER IF NOT EXISTS '${DB_USER1}'@'%' IDENTIFIED BY '${DB_USERPASS1}';"
+mysql -e "CREATE USER IF NOT EXISTS 'wordpress'@'inception_backend' IDENTIFIED BY '${DB_USERPASS1}';"
 mysql -e "GRANT ALL PRIVILEGES ON ${WORDPRESS_DB}.* TO '${DB_USER1}'@'%';"
+mysql -e "GRANT ALL PRIVILEGES ON ${WORDPRESS_DB}.* TO 'wordpress'@'inception_backend';"
 
 # Create the second user (administrator)
 mysql -e "CREATE USER IF NOT EXISTS '${DB_USER2}'@'%' IDENTIFIED BY '${DB_USERPASS2}';"
