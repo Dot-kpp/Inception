@@ -1,4 +1,4 @@
-sleep 10
+sleep 30
 # while ! mysqladmin ping -h"$MYSQL_HOST" -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" &>/dev/null; do
 #     sleep 5
 # done
