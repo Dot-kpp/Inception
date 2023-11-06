@@ -114,4 +114,4 @@ mysql -e "GRANT ALL PRIVILEGES ON ${WORDPRESS_DB}.* TO '${DB_USER2}'@'%' WITH GR
 mysql -e "FLUSH PRIVILEGES;"
 
 # Stop the MariaDB server
-mysqladmin shutdown
+# mysqladmin shutdown
