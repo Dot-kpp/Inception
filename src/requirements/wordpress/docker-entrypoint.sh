@@ -3,10 +3,12 @@ sleep 10
 #     sleep 5
 # done
 
-while ! mariadb -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE &>/dev/null; do
-	echo "for fuck sakes work bitch"
-    sleep 5
-done
+# while ! mariadb -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE &>/dev/null; do
+# 	echo "for fuck sakes work bitch"
+#     sleep 5
+# done
+
+mariadb -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE &>/dev/null;
 
 if [ ! -f /tmp/done_config ]; then
 	touch /tmp/done_config
