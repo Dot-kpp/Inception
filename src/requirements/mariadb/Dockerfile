@@ -22,6 +22,8 @@ COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
 # Make the entrypoint script executable
 RUN chmod +x /tmp/docker-entrypoint.sh
 
+RUN echo "YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+
 RUN which mysql
 
 
