@@ -43,7 +43,7 @@ services:
       - .env
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      MYSQL_ROOT_HOST: %.inception_backend  # Set allowed host
+      MYSQL_ROOT_HOST: wordpress.backend  # Set allowed host
 
 volumes:
   mariadb_data:
