@@ -1,5 +1,4 @@
-until mysqladmin ping -h"$MYSQL_HOST" -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" &> /dev/null; do
-    echo "MariaDB is unavailable - sleeping"
+while ! mariadb -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE &>/dev/null; do
     sleep 5
 done
 
