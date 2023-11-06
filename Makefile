@@ -11,6 +11,7 @@ compose:
 	sudo docker-compose $(NAME) $(COMPOSE_FILE) up --build
 
 clean:
+	sudo docker stop $$(sudo docker ps -a -q)
 	sudo docker system prune -f
 	sudo docker volume prune -f
 
