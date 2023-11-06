@@ -9,8 +9,7 @@ services:
     volumes:
       - wordpress_data:/var/www/html
     networks:
-      - inception
-      # - frontend
+      - frontend
     restart: unless-stopped
 
   wordpress:
@@ -23,9 +22,8 @@ services:
     depends_on:
       - mariadb
     networks:
-      - inception
-      # - frontend
-      # - backend
+      - frontend
+      - backend
     restart: unless-stopped
     env_file:
       - .env
@@ -39,14 +37,13 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
     networks:
-      - inception
-      # - backend
+      - backend
     restart: unless-stopped
     env_file:
       - .env
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      MYSQL_ROOT_HOST: wordpress.inception_inception  # Set allowed host
+      MYSQL_ROOT_HOST: wordpress.inception_backend  # Set allowed host
 
 volumes:
   mariadb_data:
@@ -63,9 +60,7 @@ volumes:
       device: /home/inception/data/wordpress
 
 networks:
-  inception:
+  frontend:
     driver: bridge
-  # frontend:
-  #   driver: bridge
-  # # backend:
-  # #   driver: bridge
+  backend:
+    driver: bridge
