@@ -5,7 +5,7 @@ mysqld --user=mysql --console &
 
 # Wait for MariaDB server to start (max 30 seconds)
 echo "Waiting for MariaDB server to accept connections"
-sleep 6
+sleep 20
 # timeout=30
 # while ! mysqladmin ping -h localhost -u root -p"$MYSQL_ROOT_PASSWORD" &>/dev/null
 # do
