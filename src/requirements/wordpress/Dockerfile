@@ -1,7 +1,6 @@
 FROM debian:buster
 
-RUN groupadd -g 82 www-data \
-    && useradd -u 82 -g www-data www-data
+RUN useradd -u 82 -D -S -G www-data www-data
 
 # Update and upgrade packages, and install PHP 7.3 and extensions
 RUN apt-get update && apt-get upgrade -y && \
