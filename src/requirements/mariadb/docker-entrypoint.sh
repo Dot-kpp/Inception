@@ -87,8 +87,9 @@
 # Start the MariaDB server
 mysqld_safe &
 
-sleep 3
-while ! mysqladmin ping -h localhost -u root &>/dev/null
+# Wait for MariaDB server to start (max 30 seconds)
+timeout=30
+while ! mysqladmin ping &>/dev/null
 do
     timeout=$(expr $timeout - 1)
     if [ $timeout -eq 0 ]; then
