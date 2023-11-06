@@ -1,6 +1,7 @@
 FROM debian:buster
 
-RUN sudo adduser -u 82 -D -S -G www-data www-data
+RUN addgroup -g 82 www-data \
+    && adduser -u 82 -D -S -G www-data www-data
 
 # Update and upgrade packages, and install PHP 7.3 and extensions
 RUN apt-get update && apt-get upgrade -y && \
