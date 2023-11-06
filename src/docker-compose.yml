@@ -27,8 +27,6 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-    environment:
-      MYSQL_HOST: mariadb
 
   mariadb:
     container_name: mariadb
@@ -43,10 +41,9 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-    environment:
-      MYSQL_HOST: '%'
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      MYSQL_ROOT_HOST: '%'  # Set allowed host
+    # environment:
+    #   MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    #   MYSQL_ROOT_HOST: '%'  # Set allowed host
 
 volumes:
   mariadb_data:
