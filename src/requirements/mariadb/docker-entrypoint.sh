@@ -10,6 +10,7 @@ timeout=30
 while ! mysqladmin ping -h localhost -u root -p"$MYSQL_ROOT_PASSWORD" &>/dev/null
 do
     timeout=$(expr $timeout - 1)
+    echo "look here 1"
     if [ $timeout -eq 0 ]; then
         echo "Could not connect to MariaDB server. Aborting..."
         exit 1
@@ -28,6 +29,7 @@ mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
 mysql -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;"
 mysql -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED by '$MYSQL_PASSWORD';"
 mysql -u root -p"$MYSQL_ROOT_PASSWORD" "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION;"
+echo "look here 2"
 
 
 

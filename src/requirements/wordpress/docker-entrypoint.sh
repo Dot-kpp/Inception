@@ -3,7 +3,7 @@ sleep 10
 #     sleep 5
 # done
 
-while ! mariadb -h root -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE &>/dev/null; do
+while ! mariadb -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE &>/dev/null; do
 	echo "for fuck sakes work bitch"
     sleep 5
 done
