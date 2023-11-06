@@ -3,6 +3,9 @@ while ! mysqladmin ping -h"$MYSQL_HOST" -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" &>/d
     sleep 5
 done
 
+while ! mariadb -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE &>/dev/null; do
+    sleep 5
+done
 
 if [ ! -f /tmp/done_config ]; then
 	touch /tmp/done_config
