@@ -10,7 +10,6 @@ if [ ! -f /tmp/done_config ]; then
 	mkdir -p /var/www/html
     chmod 777 /var/www/html
 
-	echo "Configuring Wordpress!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 	wp core download --path="/var/www/html" --allow-root
     wp config create --dbname="$MYSQL_DATABASE" --dbuser="$MYSQL_USER" \
@@ -21,6 +20,7 @@ if [ ! -f /tmp/done_config ]; then
 		--admin_email="$WORDPRESS_ADMIN_EMAIL" --skip-email --allow-root
     wp user create "$WORDPRESS_USER" "$WORDPRESS_EMAIL" --role=author \
 		--user_pass="$WORDPRESS_PASSWORD" --allow-root
+	echo "Configuring Wordpress!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 fi
 
 exec "$@"
