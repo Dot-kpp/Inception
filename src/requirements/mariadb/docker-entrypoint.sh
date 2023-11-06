@@ -27,13 +27,13 @@ mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost',
 mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
 mysql -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;"
 mysql -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED by '$MYSQL_PASSWORD';"
-mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'wordpress.inception_backend' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION;"
+mysql -u root -p"$MYSQL_ROOT_PASSWORD" "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION;"
 
 
 
 
 # Flush privileges
-mysql -e "FLUSH PRIVILEGES;"
+# mysql -e "FLUSH PRIVILEGES;"
 
 # Stop the MariaDB server
 # mysqladmin shutdown
