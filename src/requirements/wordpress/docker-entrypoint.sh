@@ -1,5 +1,6 @@
+sleep 5
 while ! mysqladmin -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE &>/dev/null; do
-    sleep 7
+    sleep 5
 done
 
 
