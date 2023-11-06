@@ -9,7 +9,7 @@ services:
     volumes:
       - wordpress_data:/var/www/html
     networks:
-      - frontend
+      - backend
     restart: unless-stopped
 
   wordpress:
@@ -22,7 +22,6 @@ services:
     depends_on:
       - mariadb
     networks:
-      - frontend
       - backend
     restart: unless-stopped
     env_file:
