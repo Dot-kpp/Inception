@@ -28,7 +28,7 @@ services:
     env_file:
       - .env
     environment:
-      - MYSQL_HOST: mariadb
+      MYSQL_HOST: mariadb
 
   mariadb:
     container_name: mariadb
