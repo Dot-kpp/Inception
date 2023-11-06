@@ -3,12 +3,12 @@ FROM debian:buster
 # Update and upgrade packages, and install MariaDB server and client
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y mariadb-server && \
-    # apt-get install -y mariadb-client && \
+    apt-get install -y mariadb-client && \
     apt-get install -y dumb-init
 
 # Copy your custom MariaDB configuration
-# RUN rm -rf /etc/my.cnf
-COPY conf/my.cnf /etc/mysql/my.cnf
+RUN rm -rf /etc/my.cnf
+COPY conf/my.cnf /etc/my.cnf
 
 # Create necessary directories and initialize MariaDB
 RUN mkdir -p /run/mysqld && \
