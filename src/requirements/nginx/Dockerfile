@@ -2,6 +2,7 @@ FROM debian:buster
 
 # Update and install required packages in a single RUN command
 RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y apt-utils &&\
     apt-get install -y nginx openssl
 
 # Create necessary directories
