@@ -3,13 +3,14 @@ until mysqladmin ping -h"$MYSQL_HOST" -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" &> /de
     sleep 5
 done
 
-echo "MariaDB is up - executing command!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 if [ ! -f /tmp/done_config ]; then
 	touch /tmp/done_config
 
 	mkdir -p /var/www/html
     chmod 777 /var/www/html
+
+	echo "Configuring Wordpress!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 	wp core download --path="/var/www/html" --allow-root
     wp config create --dbname="$MYSQL_DATABASE" --dbuser="$MYSQL_USER" \
