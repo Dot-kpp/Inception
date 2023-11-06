@@ -5,17 +5,8 @@ mysqld --console &
 
 # Wait for MariaDB server to start (max 30 seconds)
 echo "Waiting for MariaDB server to accept connections"
-sleep 2
-timeout=30
-while ! mysqladmin ping -h localhost -u root -p"$MYSQL_ROOT_PASSWORD" &>/dev/null
-do
-    timeout=$(expr $timeout - 1)
-    if [ $timeout -eq 0 ]; then
-        echo "Could not connect to MariaDB server. Aborting..."
-        exit 1
-    fi
-    sleep 1
-done
+sleep 10
+
 
 
 mysql -e "FLUSH PRIVILEGES;"
