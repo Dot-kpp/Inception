@@ -4,6 +4,10 @@ DEFAULT_GOAL: compose
 NAME			= -p inception
 COMPOSE_FILE	= -f ./src/docker-compose.yml
 
+prepare:
+    mkdir -p /home/inception/data/mariadb
+    mkdir -p /home/inception/data/wordpress
+
 run:
 	sudo docker-compose $(NAME) $(COMPOSE_FILE) up
 
