@@ -40,8 +40,10 @@ RUN set -ex; \
 # Copy your Docker entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/
 
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 WORKDIR /var/www/html
 
 # ENTRYPOINT [ "sh", "/usr/local/bin/docker-entrypoint.sh" ]
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["sh", "-c", "sudo", "/usr/local/bin/docker-entrypoint.sh && exec php-fpm7.3 -F -R"]
+CMD ["sh", "-c", "/usr/local/bin/docker-entrypoint.sh && exec php-fpm7.3 -F -R"]
