@@ -7,7 +7,7 @@ mysqld_safe &
 echo "Waiting for MariaDB server to accept connections"
 sleep 6
 timeout=30
-while ! mysqladmin ping &>/dev/null
+while ! mysqladmin ping -h localhost -u root -p"$MYSQL_ROOT_PASSWORD" &>/dev/null
 do
     timeout=$(expr $timeout - 1)
     if [ $timeout -eq 0 ]; then
