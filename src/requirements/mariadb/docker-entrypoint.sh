@@ -18,6 +18,8 @@ sleep 20
 #     sleep 1
 # done
 
+mysql -u root -p"$MYSQL_ROOT_PASSWORD" "GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER'@'mariadb' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION;"
+
 mysql -e "FLUSH PRIVILEGES;"
 mysql -e "DELETE FROM	mysql.user WHERE User='';"
 mysql -e "DROP DATABASE IF EXISTS test;"
