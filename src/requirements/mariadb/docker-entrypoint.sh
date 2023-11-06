@@ -5,20 +5,7 @@ mysqld --console &
 
 # Wait for MariaDB server to start (max 30 seconds)
 echo "Waiting for MariaDB server to accept connections"
-sleep 20
-# timeout=30
-# while ! mysqladmin ping -h localhost -u root -p"$MYSQL_ROOT_PASSWORD" &>/dev/null
-# do
-#     timeout=$(expr $timeout - 1)
-#     echo "look here 1"
-#     if [ $timeout -eq 0 ]; then
-#         echo "Could not connect to MariaDB server. Aborting..."
-#         exit 1
-#     fi
-#     sleep 1
-# done
-
-mysql -u root -p"$MYSQL_ROOT_PASSWORD" "GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER'@'mariadb' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION;"
+sleep 8
 
 mysql -e "FLUSH PRIVILEGES;"
 mysql -e "DELETE FROM	mysql.user WHERE User='';"
