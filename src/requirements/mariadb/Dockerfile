@@ -6,6 +6,7 @@ RUN apt-get update && apt-get upgrade -y && \
     dumb-init
 
 # Copy your custom MariaDB configuration
+RUN rm -rf /etc/my.cnf
 COPY conf/my.cnf /etc/mysql/my.cnf
 
 # Create necessary directories and initialize MariaDB
@@ -24,5 +25,5 @@ RUN chmod +x /tmp/docker-entrypoint.sh
 
 # Define the command to run MariaDB (not the entrypoint script)
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["mysqld"]
+CMD ["sh", "-c", "/tmp/docker-entrypoint.sh && exec mysqld"]
 
