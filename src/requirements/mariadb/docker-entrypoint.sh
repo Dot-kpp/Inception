@@ -33,7 +33,7 @@ mysql -u root -p"$MYSQL_ROOT_PASSWORD" "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.
 
 
 # Flush privileges
-# mysql -e "FLUSH PRIVILEGES;"
+mysql -e "FLUSH PRIVILEGES;"
 
 # Stop the MariaDB server
 # mysqladmin shutdown
