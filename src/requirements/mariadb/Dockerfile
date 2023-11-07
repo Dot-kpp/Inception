@@ -4,7 +4,7 @@ FROM debian:buster
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y mariadb-server && \
     apt-get install -y mariadb-client && \
-    apt-get install -y dumb-init \
+    apt-get install -y dumb-init && \
     apt-get install -y bash 
 
 # Copy your custom MariaDB configuration
