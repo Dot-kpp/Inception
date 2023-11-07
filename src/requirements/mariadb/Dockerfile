@@ -24,5 +24,5 @@ RUN chmod +x /tmp/docker-entrypoint.sh
 
 # Define the command to run MariaDB (not the entrypoint script)
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["sh", "-c", "/tmp/docker-entrypoint.sh && exec mysqld --console"]
+CMD ["sh", "-c", "/tmp/docker-entrypoint.sh"]
 
