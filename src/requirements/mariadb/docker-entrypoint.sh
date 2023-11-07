@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Start the MariaDB server
-mysqld --skip-grant-tables --user=mysql &
+mysqld --user=mysql &
 
 # timeout=10
 # while ! mysqladmin ping -h localhost -u root -p"$MYSQL_ROOT_PASSWORD" &>/dev/null
