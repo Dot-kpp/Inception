@@ -14,7 +14,7 @@ COPY conf/my.cnf /etc/my.cnf
 RUN mkdir -p /run/mysqld && \
     chown -R mysql:mysql /run/mysqld && \
     chown -R mysql:mysql /var/lib/mysql && \
-    mysql_install_db --basedir=/usr --user=$MYSQL_USER --datadir=/var/lib/mysql
+    mysql_install_db --basedir=/usr --user=$MYSQL_USER --datadir=/var/lib/mysql 
 
 # Copy your custom entrypoint script
 COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
@@ -24,5 +24,5 @@ RUN chmod +x /tmp/docker-entrypoint.sh
 
 # Define the command to run MariaDB (not the entrypoint script)
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["sh", "-c", "/tmp/docker-entrypoint.sh"]
+CMD ["sh", "-c", "/tmp/docker-entrypoint.sh && mysqld"]
 
