@@ -3,16 +3,17 @@
 # Start the MariaDB server
 mysqld_safe --user=mysql &
 
-# timeout=10
-# while ! mysqladmin ping -h localhost -u root -p"$MYSQL_ROOT_PASSWORD" &>/dev/null
-# do
-#     timeout=$(expr $timeout - 1)
-#     if [ $timeout -eq 0 ]; then
-#         echo "Could not connect to MariaDB server. Aborting..."
-#         exit 1
-#     fi
-#     sleep 1
-# done
+# Wait for MariaDB server to start (max 30 seconds)
+timeout=30
+while ! mysqladmin ping -h localhost --silent; do
+    timeout=$(expr $timeout - 1)
+    if [ $timeout -eq 0 ]; then
+        echo "Could not connect to MariaDB server. Aborting..."
+        exit 1
+    fi
+    sleep 1
+done
+
 
 # Wait for MariaDB server to start (max 30 seconds)
 echo "Waiting for MariaDB server to accept connections"
