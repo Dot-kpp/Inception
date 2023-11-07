@@ -3,20 +3,20 @@
 # Start the MariaDB server
 
 # Wait for MariaDB server to start (max 30 seconds)
-timeout=30
-while ! mysqladmin ping -h localhost --silent; do
-    timeout=$(expr $timeout - 1)
-    if [ $timeout -eq 0 ]; then
-        echo "Could not connect to MariaDB server. Aborting..."
-        exit 1
-    fi
-    sleep 1
-done
+# timeout=30
+# while ! mysqladmin ping -h localhost --silent; do
+#     timeout=$(expr $timeout - 1)
+#     if [ $timeout -eq 0 ]; then
+#         echo "Could not connect to MariaDB server. Aborting..."
+#         exit 1
+#     fi
+#     sleep 1
+# done
 
 
 # Wait for MariaDB server to start (max 30 seconds)
 echo "Waiting for MariaDB server to accept connections"
-sleep 5
+sleep 2
 
 mysql -e "FLUSH PRIVILEGES;"
 mysql -e "DELETE FROM mysql.user WHERE User='';"
