@@ -11,9 +11,11 @@ compose:
 	sudo docker-compose $(NAME) $(COMPOSE_FILE) up --build
 
 clean:
-	sudo docker stop $$(sudo docker ps -a -q)
 	sudo docker system prune -f
 	sudo docker volume prune -f
+
+stop:
+	sudo docker stop $$(sudo docker ps -a -q)
 
 attach-wp:
 	sudo docker exec -it wordpress sh
