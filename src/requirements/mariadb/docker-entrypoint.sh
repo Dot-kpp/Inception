@@ -18,11 +18,7 @@ done
 echo "Waiting for MariaDB server to accept connections"
 sleep 10
 
-if ! mysql -e "FLUSH PRIVILEGES;"
-then
-    echo "Could not connect to MariaDB server. Aborting..."
-    exit 1
-fi
+mysql -e "FLUSH PRIVILEGES;"
 mysql -e "DELETE FROM	mysql.user WHERE User='';"
 mysql -e "DROP DATABASE IF EXISTS test;"
 mysql -e "DELETE FROM mysql.db WHERE Db='test';"
