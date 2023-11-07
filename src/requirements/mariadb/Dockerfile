@@ -5,7 +5,6 @@ RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y mariadb-server && \
     apt-get install -y mariadb-client && \
     apt-get install -y dumb-init \
-
 # Copy your custom MariaDB configuration
 RUN rm -rf /etc/my.cnf
 COPY conf/my.cnf /etc/my.cnf
