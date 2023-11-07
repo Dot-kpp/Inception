@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Start the MariaDB server
-mysqld --console &
+mysqld --user=mysql --console &
 
 # timeout=10
 # while ! mysqladmin ping -h localhost -u root -p"$MYSQL_ROOT_PASSWORD" &>/dev/null
