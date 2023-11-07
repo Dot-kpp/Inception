@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Start the MariaDB server
-mysqld_safe --console &&
+start mysql &&
 
 # Wait for MariaDB server to start (max 30 seconds)
 # timeout=30
