@@ -42,7 +42,8 @@ services:
       - .env
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    #   MYSQL_ROOT_HOST: '%'  # Set allowed host
+      MYSQL_ROOT_PASSWORD: 'password123'
+      MYSQL_ROOT_HOST: '%' 
 
 volumes:
   mariadb_data:
@@ -61,3 +62,4 @@ volumes:
 networks:
   frontend:
   backend:
+    driver: bridge
