@@ -1,8 +1,11 @@
 FROM debian:buster
 # Add the repository for PHP 7.3
-RUN apt-get install -y software-properties-common && \
-    add-apt-repository ppa:ondrej/php && \
-    apt-get update
+# Install the software-properties-common package
+RUN apt-get update && apt-get install -y software-properties-common
+
+# Add the repository for PHP 7.3
+RUN add-apt-repository ppa:ondrej/php && apt-get update
+
 
 # Install PHP 7.3 and extensions
 RUN apt-get install -y \
