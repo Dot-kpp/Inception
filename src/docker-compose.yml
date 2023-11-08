@@ -41,8 +41,8 @@ services:
     env_file:
       - .env
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      MYSQL_ROOT_PASSWORD: 'password123'
+      # MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      # MYSQL_ROOT_PASSWORD: 'password123'
       MYSQL_ROOT_HOST: '%' 
 
 volumes:
