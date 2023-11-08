@@ -13,7 +13,6 @@
 #     fi
 #     sleep 1
 # done
-mariadb -u $MYSQL_USER -p -h localhost $MYSQL_DATABASE
 
 # Wait for MariaDB server to start (max 30 seconds)
 echo "Waiting for MariaDB server to accept connections"
