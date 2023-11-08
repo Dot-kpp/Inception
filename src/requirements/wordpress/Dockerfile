@@ -46,4 +46,4 @@ WORKDIR /var/www/html
 
 # ENTRYPOINT [ "sh", "/usr/local/bin/docker-entrypoint.sh" ]
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["sh", "-c", "/usr/local/bin/docker-entrypoint.sh && exec php-fpm7.3 -F -R"]
+CMD ["sh", "-c", "/usr/local/bin/docker-entrypoint.sh"]
