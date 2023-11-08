@@ -15,7 +15,7 @@ mysqld_safe --console &&
 
 # Wait for MariaDB server to start (max 30 seconds)
 echo "Waiting for MariaDB server to accept connections"
-sleep 10
+sleep 2
 
 mysql -e "FLUSH PRIVILEGES;"
 mysql -e "DELETE FROM mysql.user WHERE User='';"
