@@ -68,7 +68,7 @@
 
 set -e
 
-/usr/sbin/mysqld --bootstrap << EOF
+mysqld_safe --bootstrap << EOF
 USE mysql;
 FLUSH PRIVILEGES;
 DELETE FROM	mysql.user WHERE User='';
