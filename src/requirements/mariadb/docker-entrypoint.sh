@@ -7,7 +7,7 @@ service mysql start;
 # mysqld --user=mysql &
 
 # Wait for the server to start
-while ! mysqladmin ping -0.0.0.0 --silent; do
+while ! mysqladmin ping -hlocalhost --silent; do
     sleep 1
 done
 mysql -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;"
