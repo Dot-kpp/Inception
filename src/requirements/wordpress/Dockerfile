@@ -1,15 +1,10 @@
 FROM debian:buster
-# Add the repository for PHP 7.3
-# Install the software-properties-common package
-RUN apt-get update && apt-get install -y software-properties-common
 
-# Add the repository for PHP 7.3
-RUN add-apt-repository ppa:ondrej/php && apt-get update
-
-
-# Install PHP 7.3 and extensions
-RUN apt-get install -y \
+# Update and upgrade packages, and install PHP 7.3 and extensions
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y \
     mariadb-client \
+    curl \
     php7.3 \
     php7.3-fpm \
     php7.3-opcache \
@@ -23,7 +18,7 @@ RUN apt-get install -y \
     php7.3-imap \
     php7.3-mbstring \
     php7.3-zip \
-    dumb-init
+    dumb-init 
 
 # Copy your PHP-FPM configuration file (www.conf)
 COPY conf/www.conf /etc/php/7.3/fpm/pool.d/
