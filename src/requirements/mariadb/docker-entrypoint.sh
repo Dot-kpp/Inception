@@ -64,47 +64,24 @@
 # # fi
 
 
-# #!/bin/bash
-
-# set -e
-
-# /usr/bin/local/mysqld --bootstrap << EOF
-# USE mysql;
-# FLUSH PRIVILEGES;
-# DELETE FROM	mysql.user WHERE User='';
-# DROP DATABASE IF EXISTS test;
-# DELETE FROM mysql.db WHERE Db='test';
-# DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
-# ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
-# CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
-# CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED by '$MYSQL_PASSWORD';
-# GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';
-# FLUSH PRIVILEGES;
-# EOF
-
-# # fi
-
-# exec "$@"
-
-
 #!/bin/bash
 
 set -e
 
-# Initialize MariaDB without specifying the path to mysqld
-/usr/bin/mysqld --initialize-insecure --user=mysql
+/usr/sbin/local/mysqld --bootstrap << EOF
+USE mysql;
+FLUSH PRIVILEGES;
+DELETE FROM	mysql.user WHERE User='';
+DROP DATABASE IF EXISTS test;
+DELETE FROM mysql.db WHERE Db='test';
+DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
+CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
+CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED by '$MYSQL_PASSWORD';
+GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';
+FLUSH PRIVILEGES;
+EOF
 
-# Start the MariaDB server
-/etc/init.d/mysql start
-
-if [ ! -f /tmp/done_config ]; then
-    touch /tmp/done_config
-
-    # Replace the /usr/bin/mysqld --bootstrap section with these commands to create the database and user
-    mysql -u root -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;"
-    mysql -u root -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED by '$MYSQL_PASSWORD';"
-    mysql -u root -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';"
-    mysql -u root -e "FLUSH PRIVILEGES;"
-fi
+# fi
 
 exec "$@"
