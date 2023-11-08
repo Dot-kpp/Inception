@@ -98,6 +98,7 @@ service mysql start;
 mysql -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;"
 mysql -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED by '$MYSQL_PASSWORD';"
 mysql -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION;"
+mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"÷
 mysql -e "FLUSH PRIVILEGES;"
 mysqladmin -u root -p"$MYSQL_ROOT_PASSWORD" shutdown
 exec mysqld_safe
@@ -122,7 +123,6 @@ exec mysqld_safe
 # mysql -e "DROP DATABASE IF EXISTS test;"
 # mysql -e "DELETE FROM mysql.db WHERE Db='test';"
 # mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
-# mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
 # mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION;"
 
 # # Flush privileges
