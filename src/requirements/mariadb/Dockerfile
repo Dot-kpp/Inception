@@ -22,11 +22,11 @@ COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
 RUN chmod +x /tmp/docker-entrypoint.sh
 
 # Define the command to run MariaDB (not the entrypoint script)
-ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["sh", "-c", "/tmp/docker-entrypoint.sh"]
+# ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+# CMD ["sh", "-c", "/tmp/docker-entrypoint.sh"]
 
 
-# ENTRYPOINT [ "sh", "/tmp/docker-entrypoint.sh" ]
+ENTRYPOINT [ "sh", "/tmp/docker-entrypoint.sh" ]
 
 # # Loads mysqld as PID 1
 # CMD [ "mysqld_safe --console" ]
