@@ -21,7 +21,7 @@ COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
 # Make the entrypoint script executable
 RUN chmod +x /tmp/docker-entrypoint.sh
 
-Define the command to run MariaDB (not the entrypoint script)
+# Define the command to run MariaDB (not the entrypoint script)
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["sh", "-c", "/tmp/docker-entrypoint.sh"]
 
