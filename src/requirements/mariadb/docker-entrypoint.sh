@@ -4,12 +4,12 @@ set -e
 # mysqld_safe --console &
 
 service mysql start;
-mysqld --user=mysql -p${MYSQL_PASSWORD} &
+# mysqld --user=mysql &
 
 # Wait for the server to start
-while ! mysqladmin ping -hlocalhost --silent; do
-    sleep 1
-done
+# while ! mysqladmin ping -hlocalhost --silent; do
+#     sleep 1
+# done
 
 mysql -e "CREATE DATABASE IF NOT EXISTS wordpress_db;"
 mysql -e "CREATE USER IF NOT EXISTS 'mysql'@'%' IDENTIFIED by '${MYSQL_PASSWORD}';"
