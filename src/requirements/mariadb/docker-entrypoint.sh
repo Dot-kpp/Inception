@@ -3,9 +3,9 @@ set -e
 
 # mysqld_safe --console &
 
-service mysqld start &&
+service mysql start &
 # service mysql start;
-# mysqld --user=mysql &
+mysqld -u mysql &
 
 # Wait for the server to start
 # while ! mysqladmin ping -hlocalhost --silent; do
