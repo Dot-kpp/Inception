@@ -1,21 +1,19 @@
-#!/bin/sh
+#!/bin/bash
+
 set -e
 
-# mysqld_safe --console &
+/usr/bin/mysqld --bootstrap << EOF
+USE mysql;
+FLUSH PRIVILEGES;
+DELETE FROM	mysql.user WHERE User='';
+DROP DATABASE IF EXISTS test;
+DELETE FROM mysql.db WHERE Db='test';
+DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
+CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
+CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED by '$MYSQL_PASSWORD';
+GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';
+FLUSH PRIVILEGES;
+EOF
 
-# service mysql start;
-# service mysql start;
-# mysqld -u mysql -p &
-
-# Wait for the server to start
-# while ! mysqladmin ping -hlocalhost --silent; do
-#     sleep 1
-# done
-
-# mysql -e "CREATE DATABASE IF NOT EXISTS wordpress_db;"
-# mysql -e "CREATE USER IF NOT EXISTS 'mysql'@'%' IDENTIFIED by '${MYSQL_PASSWORD}';"
-# mysql -e "GRANT ALL PRIVILEGES ON wordpress_db.* TO 'mysql'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}' WITH GRANT OPTION;"
-# mysql -e "ALTER USER root@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
-# mysql -e "FLUSH PRIVILEGES;"
-# mysqladmin -u root -p${MYSQL_ROOT_PASSWORD} shutdown
-# exec mysqld_safe
+# fi
