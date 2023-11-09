@@ -3,7 +3,7 @@ set -e
 
 # mysqld_safe --console &
 
-service start mysqld
+service mysqld start &&
 # service mysql start;
 # mysqld --user=mysql &
 
