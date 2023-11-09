@@ -3,8 +3,9 @@ set -e
 
 # mysqld_safe --console &
 
+systemctl start mariadb
 # service mysql start;
-mysqld_safe --console &
+# mysqld --user=mysql &
 
 # Wait for the server to start
 # while ! mysqladmin ping -hlocalhost --silent; do
