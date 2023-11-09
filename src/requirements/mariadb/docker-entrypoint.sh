@@ -5,7 +5,7 @@ set -e
 
 # service mysql start &
 # service mysql start;
-mysqld -u root -p &
+mysqld -u mysql -p &
 
 # Wait for the server to start
 # while ! mysqladmin ping -hlocalhost --silent; do
