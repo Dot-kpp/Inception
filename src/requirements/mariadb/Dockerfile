@@ -25,4 +25,4 @@ RUN chmod +x /tmp/docker-entrypoint.sh
 ENTRYPOINT [ "sh", "/tmp/docker-entrypoint.sh" ]
 
 # Loads mysqld as PID 1
-CMD [ "mysqld" ]
+CMD [ "sudo mariadb" ]
