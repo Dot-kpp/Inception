@@ -36,4 +36,6 @@ if [ ! -f /tmp/done_config ]; then
 		--user_pass="$WORDPRESS_PASSWORD" --allow-root
 fi
 
+echo "=> done setting up wordpress!"
+
 exec "$@"
