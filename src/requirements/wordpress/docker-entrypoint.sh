@@ -1,7 +1,7 @@
 
 
 
-php-fpm7.3 -F -R
+# php-fpm7.3 -F -R
 # sleep 10
 # while ! mysqladmin ping -h"$MYSQL_HOST" -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" &>/dev/null; do
 #     sleep 5

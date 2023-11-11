@@ -44,6 +44,7 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 WORKDIR /var/www/html
 
-# ENTRYPOINT [ "sh", "/usr/local/bin/docker-entrypoint.sh" ]
-ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["sh", "-c", "/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT [ "sh", "/usr/local/bin/docker-entrypoint.sh" ]
+CMD [ "php-fpm7.3", "-F", "-R"]
+# ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+# CMD ["sh", "-c", "/usr/local/bin/docker-entrypoint.sh"]
