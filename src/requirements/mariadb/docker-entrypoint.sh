@@ -21,3 +21,5 @@ EOF
 echo "=> Done!"
 
 # fi
+
+exec "$@"
