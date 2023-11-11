@@ -13,8 +13,8 @@ COPY conf/nginx.conf /etc/nginx/http.d/default.conf
 # Generate an SSL certificate
 RUN mkdir -p /etc/nginx/ssl && \
     openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
-        -out /etc/nginx/ssl/sslcert.crt \
-        -keyout /etc/nginx/ssl/sslcert.key \
+        -out /etc/nginx/ssl/inception.crt \
+        -keyout /etc/nginx/ssl/inception.key \
         -subj "/C=CA/ST=Quebec/L=Quebec City/O=42School/OU=42Quebec/CN=jpilotte.42.fr"
 
 # Expose port 80 and 443 for Nginx
