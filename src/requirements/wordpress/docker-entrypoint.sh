@@ -6,7 +6,7 @@
 # while ! mysqladmin ping -h"$MYSQL_HOST" -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" &>/dev/null; do
 #     sleep 5
 # done
-
+sleep 5
 while ! mariadb -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE &>/dev/null; do
 	# echo "for fuck sakes work bitch"
     sleep 5
