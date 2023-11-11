@@ -22,4 +22,4 @@ echo "=> Done!"
 
 # fi
 
-exec "$@"
+exec mariadb
