@@ -18,8 +18,8 @@ RUN mkdir -p /etc/nginx/ssl && \
         -subj "/C=CA/ST=Quebec/L=Quebec City/O=42School/OU=42Quebec/CN=jpilotte.42.fr"
 
 # Expose port 80 and 443 for Nginx
-EXPOSE 80
-EXPOSE 443
+# EXPOSE 80
+# EXPOSE 443
 
 # Start Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
