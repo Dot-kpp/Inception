@@ -22,4 +22,4 @@ echo "=> Done!"
 
 # fi
 
-exec mariadb
+exec mysqld
