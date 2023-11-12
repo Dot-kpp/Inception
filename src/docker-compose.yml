@@ -12,6 +12,7 @@ services:
       - wordpress
     networks:
       - frontend
+      - backend
     restart: unless-stopped
 
   wordpress:
