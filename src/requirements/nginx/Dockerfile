@@ -11,7 +11,7 @@ RUN mkdir -p /var/www/html /etc/nginx/ssl /run/nginx
 COPY conf/nginx.conf /etc/nginx/http.d/default.conf
 
 # Generate an SSL certificate
-RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
+RUN openssl req -newkey rsa:4096 -sha256 -x509 -nodes -days 365 \
         -out /etc/nginx/ssl/sslcert.crt \
         -keyout /etc/nginx/ssl/sslcert.key \
         -subj "/C=CA/ST=Quebec/L=Quebec City/O=42School/OU=42Quebec/CN=jpilotte.42.fr"
