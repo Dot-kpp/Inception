@@ -10,6 +10,8 @@ RUN mkdir -p /var/www/html /etc/nginx/ssl /run/nginx
 # Copy your Nginx configuration
 COPY conf/nginx.conf /etc/nginx/http.d/default.conf
 
+EXPOSE 443
+
 # Generate an SSL certificate
 RUN openssl req -newkey rsa:4096 -sha256 -x509 -nodes -days 365 \
         -out /etc/nginx/ssl/sslcert.crt \
