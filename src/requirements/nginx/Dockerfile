@@ -17,7 +17,7 @@ RUN mkdir -p /etc/nginx/ssl && \
         -keyout /etc/nginx/ssl/sslcert.key \
         -subj "/C=CA/ST=Quebec/L=Quebec City/O=42School/OU=42Quebec/CN=jpilotte.42.fr"
 
-EXPOSE 443
+# EXPOSE 443
 
 # Start Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
