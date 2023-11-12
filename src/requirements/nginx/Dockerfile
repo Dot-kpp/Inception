@@ -8,9 +8,7 @@ RUN apt-get update && apt-get upgrade -y && \
 RUN mkdir -p /var/www/html /etc/nginx/ssl /run/nginx
 
 # Copy your Nginx configuration
-# COPY conf/nginx.conf /etc/nginx/http.d/default.conf
-COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
-
+COPY conf/nginx.conf /etc/nginx/http.d/default.conf
 
 # Generate an SSL certificate
 RUN mkdir -p /etc/nginx/ssl && \
