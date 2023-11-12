@@ -8,6 +8,8 @@ services:
       - "443:443"
     volumes:
       - wordpress_data:/var/www/html
+    depends_on:
+      - wordpress
     networks:
       - frontend
     restart: unless-stopped
