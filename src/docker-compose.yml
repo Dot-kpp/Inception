@@ -11,8 +11,7 @@ services:
     depends_on:
       - wordpress
     networks:
-      - frontend
-      - backend
+      - inception
     restart: unless-stopped
 
   wordpress:
@@ -25,8 +24,7 @@ services:
     depends_on:
       - mariadb
     networks:
-      - frontend
-      - backend
+      - inception
     restart: unless-stopped
     env_file:
       - .env
@@ -39,7 +37,7 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
     networks:
-      - backend
+      - inception
     restart: unless-stopped
     env_file:
       - .env
@@ -63,7 +61,5 @@ volumes:
       device: /home/inception/data/wordpress
 
 networks:
-  frontend:
-    driver: bridge
-  backend:
+  inception:
     driver: bridge
