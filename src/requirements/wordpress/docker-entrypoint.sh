@@ -38,4 +38,4 @@ fi
 
 echo "=> done setting up wordpress!"
 
-php-fpm7.3 -F -R
+systemctl start php-fpm7.3 -F -R
