@@ -2,22 +2,33 @@ FROM debian:buster
 
 # Update and upgrade packages, and install PHP 7.3 and extensions
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y \
-    mariadb-client \
-    curl \
-    php7.3 \
-    php7.3-fpm \
-    php7.3-opcache \
-    php7.3-mysql \
-    php7.3-curl \
-    php7.3-xml \
-    php7.3-gd \
-    php7.3-redis \
-    php7.3-ldap \
-    php7.3-json \
-    php7.3-imap \
-    php7.3-mbstring \
-    php7.3-zip \
+	curl \
+	openssl \
+	bash \
+	mariadb-client \
+	php8 \
+	php8-fpm \
+	php8-opcache \
+	php8-mysqli \
+	php8-session \
+	php8-iconv \
+	php8-json \
+	php8-gd \
+	php8-curl \
+	php8-xml \
+	php8-common \
+	php8-imap \
+	php8-cgi \
+	php8-pdo \
+	php8-pdo_mysql \
+	php8-soap \
+	php8-posix \
+	php8-redis \
+	php8-gettext \
+	php8-ldap \
+	php8-ctype \
+	php8-dom \
+	php8-phar \
     dumb-init 
 
 # Copy your PHP-FPM configuration file (www.conf)
@@ -45,6 +56,6 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 WORKDIR /var/www/html
 
 ENTRYPOINT [ "sh", "/usr/local/bin/docker-entrypoint.sh" ]
-CMD [ "php-fpm7.3", "-F", "-R"]
+CMD [ "php-fpm8", "-F", "-R"]
 # ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 # CMD ["sh", "-c", "/usr/local/bin/docker-entrypoint.sh"]
