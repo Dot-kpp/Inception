@@ -39,5 +39,3 @@ fi
 echo "=> done setting up wordpress!"
 
 exec php-fpm7.3 -F -R
-
-echo "wordpress ready!"
