@@ -15,7 +15,7 @@ server {
 
     #server_name www.$DOMAIN_NAME $DOMAIN_NAME;
 
-    ssl_certificate $CERTS_;
+    ssl_certificate /etc/nginx/ssl/sslcert.crt;
     ssl_certificate_key /etc/nginx/ssl/sslcert.key;" > /etc/nginx/sites-available/default
 
 
