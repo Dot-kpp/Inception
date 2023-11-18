@@ -13,7 +13,7 @@ server {
     listen 443 ssl;
     listen [::]:443 ssl;
 
-    #server_name www.$DOMAIN_NAME $DOMAIN_NAME;
+    server_name www.$DOMAIN_NAME $DOMAIN_NAME;
 
     ssl_certificate /etc/nginx/ssl/sslcert.crt;
     ssl_certificate_key /etc/nginx/ssl/sslcert.key;" > /etc/nginx/sites-available/default
