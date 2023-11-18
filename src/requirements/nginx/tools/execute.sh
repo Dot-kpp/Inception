@@ -3,7 +3,7 @@
 
 
 
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out $CERTS_ -subj "/C=CA/ST=Quebec/L=Quebec City/O=42School/OU=42Quebec/CN=jpilotte.42.fr"
+openssl req -newkey rsa:4096 -sha256 -x509 -nodes -days 365 -out /etc/nginx/ssl/sslcert.crt -keyout /etc/nginx/ssl/sslcert.key -subj "/C=CA/ST=Quebec/L=Quebec City/O=42School/OU=42Quebec/CN=jpilotte.42.fr"
 
 
 echo "
