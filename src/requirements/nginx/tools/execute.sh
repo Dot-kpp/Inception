@@ -16,7 +16,7 @@ server {
     #server_name www.$DOMAIN_NAME $DOMAIN_NAME;
 
     ssl_certificate $CERTS_;
-    ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;" > /etc/nginx/sites-available/default
+    ssl_certificate_key /etc/nginx/ssl/sslcert.key;" > /etc/nginx/sites-available/default
 
 
 echo '
