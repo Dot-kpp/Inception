@@ -3,7 +3,7 @@
 
 NAME            = -p inception
 COMPOSE_FILE    = -f ./src/docker-compose.yml
-DIRS            = /home/inception/data/mariand /home/inception/data/wordpress
+DIRS            = /home/inception/data/mariadb /home/inception/data/wordpress
 HOSTS_FILE      = /etc/hosts
 DOMAIN_NAME     = jpilotte.42.fr
 
