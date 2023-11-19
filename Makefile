@@ -28,9 +28,6 @@
 
 # re: clean compose
 
-
-
-
 .DEFAULT_GOAL := compose
 .PHONY: compose clean re create-directories configure-hosts
 
@@ -58,7 +55,7 @@ configure-hosts:
     fi
 
 compose: create-directories configure-hosts
-	echo "Starting docker-compose"
+    echo "Starting docker-compose"
     sudo docker-compose $(NAME) $(COMPOSE_FILE) up --build
 
 clean:
