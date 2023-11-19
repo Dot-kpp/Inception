@@ -8,7 +8,8 @@ HOSTS_FILE      = /etc/hosts
 DOMAIN_NAME     = jpilotte.42.fr
 
 run:
-    sudo docker-compose $(NAME) $(COMPOSE_FILE) up
+    @echo "Running docker-compose"
+    @sudo docker-compose $(NAME) $(COMPOSE_FILE) up
 
 create-directories:
     @for dir in $(DIRS); do \
