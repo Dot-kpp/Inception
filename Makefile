@@ -21,14 +21,14 @@ create-directories:
 
 
 configure-hosts:
-    @if ! grep -q "$(DOMAIN_NAME)" "$(HOSTS_FILE)"; then \
+	@if ! grep -q "$(DOMAIN_NAME)" "$(HOSTS_FILE)"; then \
         echo "Configuring hosts file for $(DOMAIN_NAME)"; \
         sudo sh -c 'echo "127.0.0.1 $(DOMAIN_NAME)" >> $(HOSTS_FILE)'; \
-    fi
+	fi
 
 compose: create-directories configure-hosts
-    @echo "Starting docker-compose"
-    @sudo docker-compose $(NAME) $(COMPOSE_FILE) up --build
+	@echo "Starting docker-compose"
+	@sudo docker-compose $(NAME) $(COMPOSE_FILE) up --build
 
 
 clean:
