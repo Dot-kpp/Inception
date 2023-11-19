@@ -12,12 +12,13 @@ run:
     @sudo docker-compose $(NAME) $(COMPOSE_FILE) up
 
 create-directories:
-    @for dir in $(DIRS); do \
-        if [ ! -d $$dir ]; then \
-            echo "Creating volumes: $$dir"; \
-            mkdir -p $$dir; \
-        fi; \
-    done
+	@for dir in $(DIRS); do \
+		if [ ! -d $$dir ]; then \
+			echo "Creating volumes: $$dir"; \
+			mkdir -p $$dir; \
+		fi; \
+	done
+
 
 configure-hosts:
     @if ! grep -q "$(DOMAIN_NAME)" "$(HOSTS_FILE)"; then \
