@@ -22,8 +22,8 @@ create-directories:
 
 configure-hosts:
 	@if ! grep -q "$(DOMAIN_NAME)" "$(HOSTS_FILE)"; then \
-        echo "Configuring hosts file for $(DOMAIN_NAME)"; \
-        sudo sh -c 'echo "127.0.0.1 $(DOMAIN_NAME)" >> $(HOSTS_FILE)'; \
+		echo "Configuring hosts file for $(DOMAIN_NAME)"; \
+		sudo sh -c 'echo "127.0.0.1 $(DOMAIN_NAME)" >> $(HOSTS_FILE)'; \
 	fi
 
 compose: create-directories configure-hosts
