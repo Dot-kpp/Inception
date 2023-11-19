@@ -8,7 +8,7 @@ HOSTS_FILE      = /etc/hosts
 DOMAIN_NAME     = jpilotte.42.fr
 
 run:
-    @echo "Running docker-compose"
+    @echo "Running docker-compose" 
     @sudo docker-compose $(NAME) $(COMPOSE_FILE) up
 
 create-directories:
@@ -32,29 +32,29 @@ compose: create-directories configure-hosts
 
 
 clean:
-	echo "Cleaning docker images"
-    sudo docker system prune -f
-    sudo docker volume prune -f
-	echo "Done"
+	@echo "Cleaning docker images"
+	sudo docker system prune -f
+	sudo docker volume prune -f
+	@echo "Done"
 
 stop:
-	echo "Stopping docker containers"
-    sudo docker stop $$(sudo docker ps -a -q)
-	echo "Done"
+	@echo "Stopping docker containers"
+	sudo docker stop $$(sudo docker ps -a -q)
+	@echo "Done"
 
 attach-wp:
-	echo "Attaching to wordpress container"
-    sudo docker exec -it wordpress sh
-	echo "Done"
+	@echo "Attaching to wordpress container"
+	sudo docker exec -it wordpress sh
+	@echo "Done"
 
 attach-maria:
-	echo "Attaching to mariadb container"
-    sudo docker exec -it mariadb sh
-	echo "Done"
+	@echo "Attaching to mariadb container"
+	sudo docker exec -it mariadb sh
+	@echo "Done"
 
 attach-nginx:
-	echo "Attaching to nginx container"
-    sudo docker exec -it nginx sh
-	echo "Done"
+	@echo "Attaching to nginx container"
+	sudo docker exec -it nginx sh
+	@echo "Done"
 
 re: clean compose
