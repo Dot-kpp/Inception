@@ -27,7 +27,6 @@ configure-hosts:
 	fi
 
 compose: create-directories configure-hosts
-	@echo "Starting docker-compose"
 	@sudo docker-compose $(NAME) $(COMPOSE_FILE) up --build
 
 clean:
