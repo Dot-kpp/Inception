@@ -27,7 +27,7 @@ configure-hosts:
 	fi
 
 compose: create-directories configure-hosts
-	@sudo docker-compose $(NAME) $(COMPOSE_FILE) up --build
+	sudo docker-compose $(NAME) $(COMPOSE_FILE) up --build
 
 clean:
 	@echo "Cleaning docker images"
